@@ -6,5 +6,4 @@ It uses some excellent libraries to do all the heavy lift:
  * dagre
  * d3 
 
-Download it and open the index.html file.
-
+Download it and open the index.html file or try it out <a href="https://fponzi.me/ApacheOozieWorkflowVisualizer/">here</a>
