@@ -48,7 +48,7 @@ function loadGraph(states, edges) {
         });
 
 // Center the graph
-    var initialScale = 0.75;
+    var initialScale = 0.85;
     svg.call(zoom.transform, d3.zoomIdentity.translate((svg.attr("width") - g.graph().width * initialScale) / 2, 20).scale(initialScale));
     svg.attr('height', g.graph().height * initialScale + 40);
 }
