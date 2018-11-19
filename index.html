@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Apache Oozie Workflow Visualizer</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="js/lodash.js"></script>
+
+    <script src="js/graphlib.core.min.js"></script>
+    <script src="js/dagre.core.min.js"></script>
+    <script src="js/d3.min.js"></script>
+    <script src="js/dagre-d3.core.min.js"></script>
+    <link rel="stylesheet" href="css/tipsy.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="js/jquery-1.9.1.min.js"></script>
+    <script src="js/tipsy.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <style id="css">
+    </style>
+</head>
+<body>
+<div class="container-fluid" style="padding-top:4px">
+
+    <div class="row">
+        <div class="col-3">
+            <h2>Apache Oozie Workflow Visualizer</h2>
+            <p>This is a simple Apache Oozie workflow visualization tool. Mouseover the vertex to get some additional informations.</p>
+            <label for="wfinput">Paste here your workflow file:</label>
+            <textarea id="wfinput" class="form-control" style="height:50%; width: 100%"></textarea>
+            <button type="button" class="btn btn-primary" id="loadbtn">Load graph</button>
+        </div>
+        <div class="col-9">
+            <svg id="svg" height="600" style="width:100%"></svg>
+        </div>
+    </div>
+</div>
+</div>
+<script src="js/main.js"></script>
+</body>
+</html>
