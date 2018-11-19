@@ -55,7 +55,41 @@ function loadGraph(states, edges) {
 
 
 $(function() {
-    let xml = '';
+    let xml = '<workflow-app xmlns="uri:oozie:workflow:0.4" name="simple-Workflow">\n' +
+        '    <start to="Create_External_Table" />\n' +
+        '    <action name="Create_External_Table">\n' +
+        '        <hive xmlns="uri:oozie:hive-action:0.4">\n' +
+        '            <job-tracker>xyz.com:8088</job-tracker>\n' +
+        '            <name-node>hdfs://rootname</name-node>\n' +
+        '            <script>hdfs_path_of_script/external.hive</script>\n' +
+        '        </hive>\n' +
+        '        <ok to="Create_orc_Table" />\n' +
+        '        <error to="kill_job" />\n' +
+        '    </action>\n' +
+        '    <action name="Create_orc_Table">\n' +
+        '        <hive xmlns="uri:oozie:hive-action:0.4">\n' +
+        '            <job-tracker>xyz.com:8088</job-tracker>\n' +
+        '            <name-node>hdfs://rootname</name-node>\n' +
+        '            <script>hdfs_path_of_script/orc.hive</script>\n' +
+        '        </hive>\n' +
+        '        <ok to="Insert_into_Table" />\n' +
+        '        <error to="kill_job" />\n' +
+        '    </action>\n' +
+        '    <action name="Insert_into_Table">\n' +
+        '        <hive xmlns="uri:oozie:hive-action:0.4">\n' +
+        '            <job-tracker>xyz.com:8088</job-tracker>\n' +
+        '            <name-node>hdfs://rootname</name-node>\n' +
+        '            <script>hdfs_path_of_script/Copydata.hive</script>\n' +
+        '            <param>database_name</param>\n' +
+        '        </hive>\n' +
+        '        <ok to="end" />\n' +
+        '        <error to="kill_job" />\n' +
+        '    </action>\n' +
+        '    <kill name="kill_job">\n' +
+        '        <message>Job failed</message>\n' +
+        '    </kill>\n' +
+        '    <end name="end" />\n' +
+        '</workflow-app>';
 
     let $wfarea = $('textarea');
     $wfarea.val(xml);
