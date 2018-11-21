@@ -103,7 +103,17 @@ $(function() {
 
         xml.find("action").each(function () {
             // <action name="hive2-a1aa" cred="hive2">
-            states[$(this).attr('name')] = {'description': $(this).text()};
+            var description = "";
+            $(this).children().each(function(){
+                if($(this)[0].nodeName !== "OK" && $(this)[0].nodeName !== "ERROR"){
+                    console.log("Name: " + $(this)[0].nodeName);
+                    $(this).children().each(function(){
+                        description += $(this)[0].nodeName  + "= "+ $(this).text() + "<br><span style='color:yellow;'>----</span><br>";
+                    })
+                }
+            });
+
+            states[$(this).attr('name')] = {'description': description};
             edges.push({'from': $(this).attr("name"), 'to': $(this).find('ok').attr('to'), value : {
                 //'label': 'ok'
                     'arrowheadStyle' : "fill: #afa"
